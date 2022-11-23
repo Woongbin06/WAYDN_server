@@ -1,3 +1,4 @@
+/*
 package com.WAYDN.waydn.condition.domain.condition;
 
 import com.WAYDN.waydn.condition.domain.user.User;
@@ -29,3 +30,4 @@ public class Condition {
     @JoinColumn(name = "user_id")
     private User user;
 }
+*/

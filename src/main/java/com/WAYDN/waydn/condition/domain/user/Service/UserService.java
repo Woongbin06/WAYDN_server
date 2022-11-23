@@ -3,6 +3,7 @@ package com.WAYDN.waydn.condition.domain.user.Service;
 import com.WAYDN.waydn.condition.domain.user.User;
 import com.WAYDN.waydn.condition.domain.user.repository.UserRepository;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserJoinRequestDto;
+import com.WAYDN.waydn.condition.domain.user.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,9 +19,9 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Long join(UserJoinRequestDto request) {
+    public UserResponseDto signUp(UserJoinRequestDto request) {
         User user = userRepository.save(request.toEntity());
-        return user.getId();
+        return new UserResponseDto(user);
     }
 
     public Optional<User> findByName(String name) {

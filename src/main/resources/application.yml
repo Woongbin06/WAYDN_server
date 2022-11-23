@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url : jdbc:mysql://localhost:3306/waydn?useSSL=false&serverTimezone=Asia/Seoul
     username: root
-    password: kkk3491007
+    password: kob3491007!
 
   jpa:
     database: mysql
