@@ -3,6 +3,8 @@ package com.WAYDN.waydn.condition.domain.user.web.dto;
 import com.WAYDN.waydn.condition.domain.user.User;
 import lombok.Getter;
 
+import java.util.Optional;
+
 @Getter
 public class UserResponseDto {
 

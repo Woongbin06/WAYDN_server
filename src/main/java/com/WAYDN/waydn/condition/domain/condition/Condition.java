@@ -1,4 +1,3 @@
-/*
 package com.WAYDN.waydn.condition.domain.condition;
 
 import com.WAYDN.waydn.condition.domain.user.User;
@@ -26,8 +25,13 @@ public class Condition {
         this.content = content;
     }
 
+    @Builder
+    public Condition(long id, String content) {
+        this.id = id;
+        this.content = content;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 }
-*/

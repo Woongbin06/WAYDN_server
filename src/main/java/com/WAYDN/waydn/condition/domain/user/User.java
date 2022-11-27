@@ -1,10 +1,13 @@
 package com.WAYDN.waydn.condition.domain.user;
 
+import com.WAYDN.waydn.condition.domain.condition.Condition;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,6 +38,6 @@ public class User {
         this.password = password;
     }
 
-    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private final List<Condition> conditions = new ArrayList<>();*/
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private final List<Condition> conditions = new ArrayList<>();
 }
