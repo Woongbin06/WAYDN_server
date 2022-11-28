@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "Conditions")
 @Getter
 @NoArgsConstructor
-@Entity
 public class Condition {
 
     @Id
@@ -19,11 +20,6 @@ public class Condition {
 
     @Column(length = 20, nullable = false)
     private String content;
-
-    @Builder
-    public Condition(String content) {
-        this.content = content;
-    }
 
     @Builder
     public Condition(long id, String content) {

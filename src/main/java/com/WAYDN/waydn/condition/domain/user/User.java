@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Users")
 @Getter
 @NoArgsConstructor
 public class User {
@@ -39,5 +40,5 @@ public class User {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private final List<Condition> conditions = new ArrayList<>();
+    private List<Condition> conditions = new ArrayList<>();
 }
