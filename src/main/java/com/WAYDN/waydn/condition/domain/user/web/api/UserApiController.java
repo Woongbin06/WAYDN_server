@@ -5,11 +5,11 @@ import com.WAYDN.waydn.condition.domain.user.User;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserJoinRequestDto;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,17 +19,19 @@ public class UserApiController {
     private final UserService userService;
 
     @PostMapping("/join")
-    public UserResponseDto singUp(@RequestBody @Valid UserJoinRequestDto request) {
-        return userService.signUp(request);
+    @ResponseStatus(HttpStatus.OK)
+    public void singUp(@RequestBody @Valid UserJoinRequestDto request) throws Exception {
+        userService.signUp(request);
     }
 
-    @GetMapping("/find/name")
-    public Optional<User> findByName(@PathVariable String name) {
-        return userService.findByName(name);
+    @GetMapping("/find/{name}")
+    public UserResponseDto findByName(@Valid @PathVariable String name) {
+        UserResponseDto user = userService.findByName(name);
+        return user;
     }
 
     @GetMapping("/find")
-    public List<User> findAll() {
+    public List<UserResponseDto> findAll() {
         return userService.findAll();
     }
 }

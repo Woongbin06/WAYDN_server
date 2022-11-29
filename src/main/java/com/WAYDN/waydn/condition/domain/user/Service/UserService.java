@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,18 +20,25 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public UserResponseDto signUp(UserJoinRequestDto request) {
+    public Long signUp(UserJoinRequestDto request) throws Exception {
+
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+            throw new Exception("이미 존재하는 이메일입니다.");
+        }
         User user = userRepository.save(request.toEntity());
+
+        return user.getId();
+    }
+
+    public UserResponseDto findByName(String name) {
+        Optional<User> user = userRepository.findByName(name);
         return new UserResponseDto(user);
     }
 
-    public Optional<User> findByName(String name) {
-        Optional<User> findUser = userRepository.findByName(name);
-        return findUser;
-    }
-
-    public List<User> findAll() {
-        List<User> users = userRepository.findAll();
-        return users;
+    public List<UserResponseDto> findAll() {
+        return userRepository.findAll()
+                .stream()
+                .map(UserResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
