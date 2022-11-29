@@ -1,4 +1,4 @@
-package com.WAYDN.waydn.condition.domain.user.Service;
+package com.WAYDN.waydn.condition.domain.user.service;
 
 import com.WAYDN.waydn.condition.domain.user.User;
 import com.WAYDN.waydn.condition.domain.user.repository.UserRepository;

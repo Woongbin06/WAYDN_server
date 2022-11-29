@@ -1,7 +1,6 @@
 package com.WAYDN.waydn.condition.domain.user.web.api;
 
-import com.WAYDN.waydn.condition.domain.user.Service.UserService;
-import com.WAYDN.waydn.condition.domain.user.User;
+import com.WAYDN.waydn.condition.domain.user.service.UserService;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserJoinRequestDto;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
