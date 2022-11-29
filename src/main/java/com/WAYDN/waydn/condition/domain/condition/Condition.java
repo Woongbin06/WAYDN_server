@@ -21,13 +21,21 @@ public class Condition {
     @Column(length = 20, nullable = false)
     private String content;
 
+    private Boolean status = false;
+
     @Builder
-    public Condition(long id, String content) {
+    public Condition(long id, String content, Boolean status) {
         this.id = id;
         this.content = content;
+        this.status = status;
     }
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User writer;
+
+    public void confirmWriter(User user) {
+        this.writer = user;
+        user.addConditions(this);
+    }
 }

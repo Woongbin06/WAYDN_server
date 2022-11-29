@@ -3,6 +3,7 @@ package com.WAYDN.waydn.condition.domain.user.service;
 import com.WAYDN.waydn.condition.domain.user.User;
 import com.WAYDN.waydn.condition.domain.user.repository.UserRepository;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserJoinRequestDto;
+import com.WAYDN.waydn.condition.domain.user.web.dto.UserLoginRequestDto;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,20 @@ public class UserService {
         User user = userRepository.save(request.toEntity());
 
         return user.getId();
+    }
+
+    public UserResponseDto login(UserLoginRequestDto request) throws Exception {
+        User result;
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new Exception("존재하지 않는 회원입니다."));
+
+        if (user.getPassword().equals(request.getPassword())) {
+            result = request.toEntity();
+        } else {
+            throw new Exception("잘못된 비밀번호입니다.");
+        }
+
+        return new UserResponseDto(result);
     }
 
     public UserResponseDto findByName(String name) {

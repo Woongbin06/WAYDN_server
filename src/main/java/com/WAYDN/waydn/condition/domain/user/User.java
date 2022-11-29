@@ -41,4 +41,8 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Condition> conditions = new ArrayList<>();
+
+    public void addConditions(Condition condition) {
+        this.conditions.add(condition);
+    }
 }
