@@ -32,7 +32,7 @@ public class UserApiController {
     }
 
     @GetMapping("/find/{name}")
-    public UserResponseDto findByName(@Valid @PathVariable String name) {
+    public UserResponseDto findByName(@Valid @PathVariable String name) throws Exception {
         UserResponseDto user = userService.findByName(name);
         return user;
     }

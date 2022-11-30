@@ -45,8 +45,9 @@ public class UserService {
         return new UserResponseDto(result);
     }
 
-    public UserResponseDto findByName(String name) {
-        Optional<User> user = userRepository.findByName(name);
+    public UserResponseDto findByName(String name) throws Exception {
+        User user = userRepository.findByName(name)
+                .orElseThrow(() -> new Exception("사용자를 찾을 수 없습니다."));
         return new UserResponseDto(user);
     }
 

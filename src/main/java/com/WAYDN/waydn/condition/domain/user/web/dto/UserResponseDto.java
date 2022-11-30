@@ -1,6 +1,6 @@
 package com.WAYDN.waydn.condition.domain.user.web.dto;
 
-import com.WAYDN.waydn.condition.domain.condition.Condition;
+import com.WAYDN.waydn.condition.domain.condition.web.dto.ConditionResponseDto;
 import com.WAYDN.waydn.condition.domain.user.User;
 import lombok.Getter;
 
@@ -11,14 +11,13 @@ import java.util.stream.Collectors;
 @Getter
 public class UserResponseDto {
 
-    private String name;
-    private List<Condition> conditions;
+    private final String name;
+    private List<ConditionResponseDto> conditions;
 
     public UserResponseDto(User user) {
         this.name = user.getName();
-    }
-
-    public UserResponseDto(Optional<User> user) {
-        this.name = user.get().getName();
+        this.conditions = user.getConditions().stream()
+                .map(ConditionResponseDto::new)
+                .collect(Collectors.toList());
     }
 }

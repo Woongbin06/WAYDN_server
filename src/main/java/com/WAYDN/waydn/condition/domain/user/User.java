@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -39,7 +41,7 @@ public class User {
         this.password = password;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "writer")
+    @OneToMany(cascade = ALL, mappedBy = "writer")
     private List<Condition> conditions = new ArrayList<>();
 
     public void addConditions(Condition condition) {
