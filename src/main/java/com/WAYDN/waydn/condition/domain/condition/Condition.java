@@ -21,13 +21,10 @@ public class Condition extends BaseEntity{
     @Column(length = 20, nullable = false)
     private String content;
 
-    private Boolean status = false;
-
     @Builder
-    public Condition(long id, String content, Boolean status) {
+    public Condition(long id, String content) {
         this.id = id;
         this.content = content;
-        this.status = status;
     }
 
     @ManyToOne
@@ -37,5 +34,9 @@ public class Condition extends BaseEntity{
     public void confirmWriter(User user) {
         this.writer = user;
         user.addConditions(this);
+    }
+
+    public void update(String content) {
+        this.content = content;
     }
 }
