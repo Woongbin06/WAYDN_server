@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "Conditions")
 @Getter
 @NoArgsConstructor
-public class Condition {
+public class Condition extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
