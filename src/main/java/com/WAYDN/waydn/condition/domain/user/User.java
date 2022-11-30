@@ -39,7 +39,7 @@ public class User {
         this.password = password;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "writer")
     private List<Condition> conditions = new ArrayList<>();
 
     public void addConditions(Condition condition) {

@@ -2,6 +2,7 @@ package com.WAYDN.waydn.condition.domain.user.web.api;
 
 import com.WAYDN.waydn.condition.domain.user.service.UserService;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserJoinRequestDto;
+import com.WAYDN.waydn.condition.domain.user.web.dto.UserLoginRequestDto;
 import com.WAYDN.waydn.condition.domain.user.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,15 @@ public class UserApiController {
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.OK)
-    public void singUp(@RequestBody @Valid UserJoinRequestDto request) throws Exception {
+    public String singUp(@RequestBody @Valid UserJoinRequestDto request) throws Exception {
         userService.signUp(request);
+        return "success";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody @Valid UserLoginRequestDto request) throws Exception {
+        userService.login(request);
+        return "success";
     }
 
     @GetMapping("/find/{name}")

@@ -31,7 +31,7 @@ public class Condition {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") // user의 PK명을 써줌.
     private User writer;
 
     public void confirmWriter(User user) {
