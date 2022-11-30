@@ -1,6 +1,7 @@
 package com.WAYDN.waydn.condition.domain.condition.web.dto;
 
 import com.WAYDN.waydn.condition.domain.condition.Condition;
+import com.WAYDN.waydn.condition.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

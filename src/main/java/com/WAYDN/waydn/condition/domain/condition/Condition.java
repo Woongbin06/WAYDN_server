@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 @Table(name = "Conditions")
 @Getter
@@ -21,15 +23,16 @@ public class Condition extends BaseEntity{
     @Column(length = 20, nullable = false)
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id") // user의 PK명을 써줌.
+    private User writer;
+
     @Builder
     public Condition(long id, String content) {
         this.id = id;
         this.content = content;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id") // user의 PK명을 써줌.
-    private User writer;
 
     public void confirmWriter(User user) {
         this.writer = user;

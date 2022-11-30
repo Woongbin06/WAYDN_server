@@ -23,7 +23,7 @@ public class ConditionService {
     public void create(Long userId, ConditionCreateRequestDto request) throws Exception {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new Exception("로그인 후 이용 가능합니다."));
-        Condition condition = conditionRepository.save( request.toEntity());
+        Condition condition = conditionRepository.save(request.toEntity());
         condition.confirmWriter(user);
     }
 
