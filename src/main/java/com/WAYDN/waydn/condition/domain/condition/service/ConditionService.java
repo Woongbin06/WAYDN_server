@@ -32,7 +32,7 @@ public class ConditionService {
         Condition condition = conditionRepository.findById(conditionId)
                 .orElseThrow(() -> new Exception("로그인 후 이용 가능합니다."));
 
-        Optional<User> user = userRepository.findById(conditionId);
+        Optional<User> user = userRepository.findById(userId);
         if (!condition.getWriter().getEmail().equals(user.get().getEmail())) {
             throw new Exception("본인의 상태가 아닙니다.");
         }
@@ -41,9 +41,10 @@ public class ConditionService {
     }
 
     @Transactional
-    public void update(Long id, ConditionCreateRequestDto request) {
-        Optional<Condition> condition = conditionRepository.findById(id);
+    public void update(Long id, ConditionCreateRequestDto request) throws Exception {
+        Condition condition = conditionRepository.findById(id)
+                .orElseThrow(() -> new Exception("본인의 상태가 아닙니다."));
 
-        condition.get().update(request.getContent());
+        condition.update(request.getContent());
     }
 }
