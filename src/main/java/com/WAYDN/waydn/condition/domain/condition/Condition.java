@@ -23,16 +23,18 @@ public class Condition extends BaseEntity{
     @Column(length = 20, nullable = false)
     private String content;
 
+    private Boolean good;
+
     @ManyToOne
     @JoinColumn(name = "user_id") // user의 PK명을 써줌.
     private User writer;
 
     @Builder
-    public Condition(long id, String content) {
-        this.id = id;
+    public Condition(String content, Boolean good, User writer) {
         this.content = content;
+        this.good = good;
+        this.writer = writer;
     }
-
 
     public void confirmWriter(User user) {
         this.writer = user;
