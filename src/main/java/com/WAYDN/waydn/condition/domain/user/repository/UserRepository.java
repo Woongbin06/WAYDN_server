@@ -1,6 +1,6 @@
 package com.WAYDN.waydn.condition.domain.user.repository;
 
-import com.WAYDN.waydn.condition.domain.user.User;
+import com.WAYDN.waydn.condition.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

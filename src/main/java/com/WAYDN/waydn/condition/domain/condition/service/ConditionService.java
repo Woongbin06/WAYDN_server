@@ -3,7 +3,7 @@ package com.WAYDN.waydn.condition.domain.condition.service;
 import com.WAYDN.waydn.condition.domain.condition.Condition;
 import com.WAYDN.waydn.condition.domain.condition.repository.ConditionRepository;
 import com.WAYDN.waydn.condition.domain.condition.web.dto.ConditionCreateRequestDto;
-import com.WAYDN.waydn.condition.domain.user.User;
+import com.WAYDN.waydn.condition.domain.user.domain.User;
 import com.WAYDN.waydn.condition.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

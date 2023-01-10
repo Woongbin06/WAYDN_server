@@ -1,13 +1,11 @@
 package com.WAYDN.waydn.condition.domain.condition;
 
-import com.WAYDN.waydn.condition.domain.user.User;
+import com.WAYDN.waydn.condition.domain.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
-import static javax.persistence.FetchType.*;
 
 @Entity
 @Table(name = "Conditions")

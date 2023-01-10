@@ -1,6 +1,7 @@
-package com.WAYDN.waydn.condition.domain.user;
+package com.WAYDN.waydn.condition.domain.user.domain;
 
 import com.WAYDN.waydn.condition.domain.condition.Condition;
+import com.WAYDN.waydn.condition.domain.user.domain.type.Role;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Builder
     public User(String email, int classNumber, String name, String password) {
